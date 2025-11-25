@@ -1,18 +1,10 @@
-# ETAPA 1: Construcción (Build)
-FROM gradle:8.5-jdk17 AS build
+# CAMBIO AQUÍ: Usamos eclipse-temurin en lugar de openjdk
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY . .
-# Damos permisos de ejecución al gradlew y construimos el JAR (omitiendo tests para agilizar deploy)
-RUN chmod +x ./gradlew
-RUN ./gradlew bootJar -x test --no-daemon
-
-# ETAPA 2: Ejecución (Runtime)
-FROM openjdk:17-alpine
-WORKDIR /app
-# Copiamos solo el JAR generado desde la etapa anterior
+# Copiamos el JAR generado en la etapa 1
 COPY --from=build /app/build/libs/*.jar app.jar
 
-# Exponemos el puerto 8080 (obligatorio para Render)
+# Exponemos el puerto
 EXPOSE 8080
 
 # Comando de inicio
