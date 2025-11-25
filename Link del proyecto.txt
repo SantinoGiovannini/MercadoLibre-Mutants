@@ -1,0 +1,7 @@
+Swagger UI: https://mutants-api.onrender.com/swagger-ui.html
+
+OpenAPI Spec (JSON): https://mutants-api.onrender.com/v3/api-docs
+
+Repositorio GitHub: https://github.com/SantinoGiovannini/MercadoLibre-Mutants
+
+URL Producción (Render): https://mutants-api.onrender.com
